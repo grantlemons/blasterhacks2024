@@ -6,8 +6,8 @@ const config = {
 	preprocess: vitePreprocess(),
 	kit: {
 		adapter: adapter({
-      fallback: '200.html'
-    })
+			fallback: '200.html'
+		})
 	}
 };
 

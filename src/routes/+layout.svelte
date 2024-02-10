@@ -7,7 +7,7 @@
 	import { getFirestore } from 'firebase/firestore';
 	import { Button, DarkMode } from 'flowbite-svelte';
 	import requestNotify from '$lib/request_notify';
-  import { publishPublicUserData } from "$lib/publicUserData";
+	import { publishPublicUserData } from '$lib/publicUserData';
 	import UserAvatar from '$lib/UserAvatar.svelte';
 
 	const firebaseConfig = {
@@ -22,7 +22,7 @@
 	// Initialize Firebase
 	const app = initializeApp(firebaseConfig);
 	const auth = getAuth(app);
-  auth.onAuthStateChanged(() => publishPublicUserData())
+	auth.onAuthStateChanged(() => publishPublicUserData());
 	const firestore = getFirestore(app);
 	const messaging = getMessaging(app);
 	getToken(messaging, {
@@ -37,10 +37,10 @@
 			<a href="/"><h2 class="text-white font-bold text-lg">StandUp</h2></a>
 			<div class="flex-auto" />
 			<SignedIn let:user>
-				<a href="/user" class="flex flex-row items-center"> 
-          <UserAvatar userId={user.uid}/>
-          <span class="p-3 text-white">{user.displayName}</span>
-        </a>
+				<a href="/user" class="flex flex-row items-center">
+					<UserAvatar userId={user.uid} />
+					<span class="p-3 text-white">{user.displayName}</span>
+				</a>
 			</SignedIn>
 			<SignedOut>
 				<Button href="/login" on:click={requestNotify}>Login</Button>

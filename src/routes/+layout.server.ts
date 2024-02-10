@@ -1,4 +1,4 @@
 // for SPA
-export const trailingSlash = "always";
+export const trailingSlash = 'always';
 export const prerender = true;
 export const ssr = false;
