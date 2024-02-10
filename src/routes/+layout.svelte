@@ -9,6 +9,7 @@
 	import requestNotify from '$lib/requestNotify';
 	import { publishPublicUserData } from '$lib/publicUserData';
 	import UserAvatar from '$lib/UserAvatar.svelte';
+	import LogoWithText from '$lib/LogoWithText.svelte';
 
 	const firebaseConfig = {
 		apiKey: 'AIzaSyCjUnR1Eydjr3qxouIl4fxiXyQvG2auUj8',
@@ -34,7 +35,7 @@
 <FirebaseApp {auth} {firestore}>
 	<div class="flex flex-col w-full h-screen dark:bg-gray-800 dark:text-white">
 		<div class="w-full bg-primary-600 h-20 flex flex-row items-center space-x-4 p-5">
-			<a href="/"><h2 class="text-white font-bold text-lg">StandUp</h2></a>
+			<a href="/"><LogoWithText color="white"/></a>
 			<div class="flex-auto" />
 			<SignedIn let:user>
 				<a href="/user" class="flex flex-row items-center">
