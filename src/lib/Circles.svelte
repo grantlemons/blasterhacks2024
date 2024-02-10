@@ -3,7 +3,7 @@
 
 	export let values: number[] = [];
 	export let max: number[] = [];
-	export let size: string = '256px';
+	export let width: string = '256px';
 
 	function randColor() {
 		let r = Math.floor(Math.random() * 255) + 1;
@@ -32,7 +32,7 @@
 	];
 </script>
 
-<svg viewBox={`0 0 37 37`} style={`width: ${size}; height: ${size};`}>
+<svg viewBox={`0 0 37 37`} style={`width: ${width}; aspect-ratio: 1/1`}>
 	{#each values as value, i}
 		<circle
 			class={['ring', colors[i].bg].join(' ')}

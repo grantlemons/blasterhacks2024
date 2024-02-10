@@ -2,6 +2,7 @@
 	import Avatar from 'svelte-boring-avatars';
 
 	export let userId: string;
+  export let size = "40px";
 </script>
 
-<Avatar size={40} name={userId} variant="beam" />
+<a href={`/user/${userId}`}><Avatar {size} name={userId} variant="beam" /></a>

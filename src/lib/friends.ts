@@ -1,4 +1,4 @@
-import { getFirestore, getDoc, collection, doc, setDoc, updateDoc, arrayUnion, CollectionReference  } from "firebase/firestore"
+import { getFirestore, getDoc, collection, doc, setDoc, updateDoc, arrayUnion, CollectionReference, arrayRemove  } from "firebase/firestore"
 import { getAuth } from "firebase/auth"; 
 
 type FriendDoc = {
@@ -61,6 +61,22 @@ export async function addFriend(newFriendId: string){
   await ensureDocumentExists();
 
   await updateDoc(doc(friendsCollection(), currentUser.uid), { friends: arrayUnion(newFriendId)})
+}
+
+
+/** Removes a user as a friend.
+  *
+  * Does nothing if the current user is not signed in. */
+export async function removeFriend(newFriendId: string){
+  let currentUser = getAuth().currentUser;
+
+  if (currentUser == null){
+    return null;
+  }
+
+  await ensureDocumentExists();
+
+  await updateDoc(doc(friendsCollection(), currentUser.uid), { friends: arrayRemove(newFriendId)})
 }
 
 
