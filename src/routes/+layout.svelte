@@ -6,7 +6,7 @@
 	import '../app.css';
 	import { getFirestore } from 'firebase/firestore';
 	import { Button, DarkMode } from 'flowbite-svelte';
-	import requestNotify from '$lib/request_notify';
+	import requestNotify from '$lib/requestNotify';
 	import { publishPublicUserData } from '$lib/publicUserData';
 	import UserAvatar from '$lib/UserAvatar.svelte';
 
