@@ -57,7 +57,10 @@
 			<div class="flex-auto" />
 			<h2 class="font-bold">{startCase($workout.kind)}</h2>
 		</div>
-		<img use:setimgsrc class="rounded" alt={$workout.kind + '---' + $workout.description} />
+
+		{#if $workout.imagePath}
+			<img use:setimgsrc class="rounded" alt={$workout.kind + '---' + $workout.description} />
+		{/if}
 		<p>{$workout.description}</p>
 		<p><em>{timestring}</em></p>
 	{:else}
