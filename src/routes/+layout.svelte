@@ -1,9 +1,10 @@
 <script lang="ts">
-	import { FirebaseApp } from 'sveltefire';
+	import { FirebaseApp, SignedIn, SignedOut } from 'sveltefire';
 	import { initializeApp } from 'firebase/app';
 	import { getAuth } from 'firebase/auth';
 	import '../app.css';
 	import { getFirestore } from 'firebase/firestore';
+	import { Button } from 'flowbite-svelte';
 
   const firebaseConfig = {
     apiKey: "AIzaSyCjUnR1Eydjr3qxouIl4fxiXyQvG2auUj8",
@@ -20,8 +21,21 @@
   const firestore = getFirestore(app);
 </script>
 
-<div >
-  <FirebaseApp {auth} {firestore}>
-  	<slot />
-  </FirebaseApp>
-</div>
+<FirebaseApp {auth} {firestore}>
+  <div class="flex flex-col w-full h-screen">
+    <div class="w-full bg-primary-600 h-20 flex flex-row items-center p-5">
+      <a href="/"><h2 class="text-white font-bold text-lg">SvelteFucker</h2></a>
+      <div class="flex-auto"/>
+      <SignedIn let:user>
+        <Button href="/user">{user.displayName}</Button>
+      </SignedIn>
+      <SignedOut>
+        <Button href="/login">Login</Button>
+      </SignedOut>
+    </div>
+
+    <div class="flex-auto">
+	    <slot />
+    </div>
+  </div>
+</FirebaseApp>

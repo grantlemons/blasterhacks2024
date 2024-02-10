@@ -1,5 +1,7 @@
 <script lang="ts">
 </script>
 
-<h1>Welcome to SvelteFucker</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<div class="w-full h-full flex flex-col justify-center items-center">
+  <h1 class="text-2xl font-bold">SvelteFucker</h1>
+  <h2 class="text-xl">Stay fit.</h2>
+</div>
