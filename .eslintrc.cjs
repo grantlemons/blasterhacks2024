@@ -1,14 +1,18 @@
 /** @type { import("eslint").Linter.Config } */
 module.exports = {
 	root: true,
+  rules: {
+    "prettier/prettier": "warn",
+  },
 	extends: [
 		'eslint:recommended',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:svelte/recommended',
-		'prettier'
+		'prettier/recommended'
 	],
 	parser: '@typescript-eslint/parser',
-	plugins: ['@typescript-eslint'],
+	plugins: ['@typescript-eslint', "plugin:prettier/recommended",
+  ],
 	parserOptions: {
 		sourceType: 'module',
 		ecmaVersion: 2020,

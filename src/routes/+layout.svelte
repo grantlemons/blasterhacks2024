@@ -3,6 +3,7 @@
 	import { initializeApp } from 'firebase/app';
 	import { getAuth } from 'firebase/auth';
 	import '../app.css';
+	import { getFirestore } from 'firebase/firestore';
 
   const firebaseConfig = {
     apiKey: "AIzaSyCjUnR1Eydjr3qxouIl4fxiXyQvG2auUj8",
@@ -16,8 +17,11 @@
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
+  const firestore = getFirestore(app);
 </script>
 
-<FirebaseApp {auth} {app}>
-	<slot />
-</FirebaseApp>
+<div >
+  <FirebaseApp {auth} {firestore}>
+  	<slot />
+  </FirebaseApp>
+</div>
