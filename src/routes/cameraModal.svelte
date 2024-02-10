@@ -1,5 +1,4 @@
 <script lang='ts'>
-  import { onMount } from 'svelte';
   import { Button, Modal } from 'flowbite-svelte';
   import { uploadImage } from '../lib/uploadImage.ts';
 
