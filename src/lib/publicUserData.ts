@@ -5,7 +5,7 @@ export type PublicUserData = {
 	displayName?: string;
 };
 
-function publicUserDataCollection(): CollectionReference {
+export function publicUserDataCollection(): CollectionReference {
 	return collection(getFirestore(), 'publicUserData');
 }
 

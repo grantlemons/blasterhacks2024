@@ -35,18 +35,18 @@
 	});
 </script>
 
-<Card>
-	{#if $workout != null && $user != null}
-		<div class="flex flex-row items-center w-full [&>*]:p-1">
-			<UserAvatar userId={$workout.userId} />
-			<h2 class="font-bold">{$user.displayName}</h2>
-			<div class="flex-auto" />
-			<h2 class="font-bold">{startCase($workout.kind)}</h2>
-		</div>
-		<img src="/lukas.jpg" class="rounded" />
-		<p>{$workout.description}</p>
-		<p><em>{timestring}</em></p>
-	{:else}
-		<Spinner />
-	{/if}
+<Card class="hover:scale-[1.02] transition-all">
+  {#if $workout != null && $user != null}
+    <div class="flex flex-row items-center w-full [&>*]:p-1">
+      <UserAvatar userId={$workout.userId}/>
+      <h2 class="font-bold"> {$user.displayName}</h2>
+      <div class="flex-auto"/>
+      <h2 class="font-bold">{startCase($workout.kind)}</h2>
+    </div>
+    <img src="/lukas.jpg" class="rounded"/>
+    <p>{$workout.description}</p>
+    <p><em>{timestring}</em></p>
+  {:else}
+    <Spinner/>
+  {/if}
 </Card>

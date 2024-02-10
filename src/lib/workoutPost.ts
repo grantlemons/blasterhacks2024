@@ -25,7 +25,7 @@ export type WorkoutKind = AllWorkoutKinds[number];
 
 // We make this a function to lazy-load the Firestore global.
 // If we do it eagerly, it crashes.
-function workoutCollection(): CollectionReference {
+export function workoutCollection(): CollectionReference {
 	return collection(getFirestore(), 'workouts');
 }
 
