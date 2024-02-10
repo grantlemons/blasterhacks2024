@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { draw } from 'svelte/transition';
+
 	export let values: number[] = [];
 	export let max: number[] = [];
 	export let size: string = '256px';
@@ -40,9 +42,10 @@
 			r="15.915"
 			stroke-width={3 / (1 - 0.25 * i)}
 			stroke={randColor()}
+			in:draw={{ duration: 1000 }}
 		/>
 		<circle
-			class={['ring', colors[i].fg].join(' ')}
+			class={['ring', 'foreground', colors[i].fg].join(' ')}
 			style={`transform: scale(${1 - 0.25 * i});`}
 			cx="50%"
 			cy="50%"
@@ -50,11 +53,27 @@
 			stroke-width={3 / (1 - 0.25 * i)}
 			stroke-dasharray={`${(value / max[i]) * 100}, 100`}
 			stroke={randColor()}
+			in:draw={{ duration: 1000 }}
 		/>
 	{/each}
 </svg>
 
 <style>
+	@-webkit-keyframes RingProgress {
+	  0% {
+	    stroke-dasharray: 0 100;
+	  }
+	}
+	
+	@keyframes RingProgress {
+	  0% {
+	    stroke-dasharray: 0 100;
+	  }
+	}
+	svg .foreground {
+		-webkit-animation: RingProgress 1s ease-in-out forwards;
+        animation: RingProgress 1s ease-in-out forwards;
+	}
 	svg {
 		transform: rotate(-90deg);
 		stroke-linecap: round;
