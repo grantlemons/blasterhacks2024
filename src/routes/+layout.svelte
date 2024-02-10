@@ -36,8 +36,6 @@
 		vapidKey:
 			'BGK8g4omXiFrAHqvsH70r1r6CqAT-lmXQm5wYY7W6AqC1_PS1gNSBZj2ciVCGbC8BYrIUKH_nwlq-Ad55DI8wuY'
 	});
-
-	requestPermission();
 </script>
 
 <FirebaseApp {auth} {firestore}>
@@ -49,7 +47,7 @@
 				<Button href="/user">{user.displayName}</Button>
 			</SignedIn>
 			<SignedOut>
-				<Button href="/login">Login</Button>
+				<Button href="/login" on:click={requestPermission}>Login</Button>
 			</SignedOut>
 			<DarkMode btnClass="w-5" />
 		</div>
