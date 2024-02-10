@@ -4,6 +4,9 @@
 	import { getFirestore } from 'firebase/firestore';
 	import { getAuth } from 'firebase/auth';
 
+	// for SPA
+	export const prerender = true;
+
 	// Initialize Firebase
 	const app = initializeApp(/* your firebase config */);
 	const firestore = getFirestore(app);
