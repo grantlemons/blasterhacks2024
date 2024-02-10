@@ -18,7 +18,7 @@
 </script>
 
 <div class="flex flex-col justify-center items-center">
-	<form on:submit={onSubmit} class="w-full sm:w-72 [&>*]:pt-4">
+	<form on:submit={onSubmit} class="w-full dark:dark:bg-gray-600 bg-gray-50 sm:w-72 [&>*]:pt-4">
 		<Label>Workout Kind</Label>
 		<Select bind:value={kind}>
 			{#each allWorkoutKinds as kind}
