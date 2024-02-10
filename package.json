@@ -38,6 +38,7 @@
 	"type": "module",
 	"dependencies": {
 		"firebase": "^10.8.0",
+		"firebaseui": "^6.1.0",
 		"sveltefire": "^0.4.5"
 	}
 }
