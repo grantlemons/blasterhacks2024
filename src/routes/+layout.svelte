@@ -6,8 +6,7 @@
 	import '../app.css';
 	import { getFirestore } from 'firebase/firestore';
 	import { Button, DarkMode } from 'flowbite-svelte';
-
-	const appName = 'BeFit';
+	import requestNotify from '$lib/request_notify';
 
 	const firebaseConfig = {
 		apiKey: 'AIzaSyCjUnR1Eydjr3qxouIl4fxiXyQvG2auUj8',
@@ -17,15 +16,6 @@
 		messagingSenderId: '930780589668',
 		appId: '1:930780589668:web:6472e046a1bddfa5b0f971'
 	};
-
-	function requestPermission() {
-		console.log('Requesting permission...');
-		Notification.requestPermission().then((permission) => {
-			if (permission === 'granted') {
-				console.log('Notification permission granted.');
-			}
-		});
-	}
 
 	// Initialize Firebase
 	const app = initializeApp(firebaseConfig);
@@ -47,7 +37,7 @@
 				<Button href="/user">{user.displayName}</Button>
 			</SignedIn>
 			<SignedOut>
-				<Button href="/login" on:click={requestPermission}>Login</Button>
+				<Button href="/login" on:click={requestNotify}>Login</Button>
 			</SignedOut>
 			<DarkMode btnClass="w-5" />
 		</div>
