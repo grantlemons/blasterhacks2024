@@ -12,7 +12,7 @@
 	export let workoutId: string;
 
 	let exists = true;
-	let timestring = '';
+	let timestring = 'seconds ago';
 
 	const workout = docStore<WorkoutPost>(getFirestore(), `workouts/${workoutId}`);
 	$: user =

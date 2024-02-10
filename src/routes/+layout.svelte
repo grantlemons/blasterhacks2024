@@ -47,7 +47,7 @@
 			</SignedOut>
 			<DarkMode btnClass="w-5 p-2 text-white" />
 		</div>
-		<div class="flex-auto">
+		<div class="flex-auto overflow-auto">
 			<slot />
 		</div>
 	</div>
