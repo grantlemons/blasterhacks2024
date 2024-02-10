@@ -62,7 +62,7 @@
 
 <Modal bind:open={showModal} on:close={stopCamera} placement="center" outsideclose>
   {#if usingCamera}
-    <video bind:this={video} use:insertStream autoplay playsinline class="rounded-lg"></video>
+    <video bind:this={video} use:insertStream autoplay playsinline class="rounded-lg" style="transform: scaleX(-1);"></video>
   {/if}
   <!-- Must use this hacky workaround because many mainstream browsers (most notably Safari) don't support ImageCapture. https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture/ImageCapture#browser_compatibility -->
   <canvas bind:this={canvas} style="display: none"></canvas>
