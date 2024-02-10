@@ -2,6 +2,7 @@
 	import { FirebaseApp } from 'sveltefire';
 	import { initializeApp } from 'firebase/app';
 	import { getAuth } from 'firebase/auth';
+	import '../app.css';
 
   const firebaseConfig = {
     apiKey: "AIzaSyCjUnR1Eydjr3qxouIl4fxiXyQvG2auUj8",
