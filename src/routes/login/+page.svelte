@@ -4,7 +4,9 @@
   import { getAuth, GoogleAuthProvider, EmailAuthProvider } from 'firebase/auth';
   import * as firebaseui from 'firebaseui'
   import 'firebaseui/dist/firebaseui.css'
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
+
+  let ui;
   
   onMount(async () => {
     let auth = getAuth();
@@ -24,11 +26,14 @@
       ],
     };
 
-    // Initialize the FirebaseUI Widget using Firebase.
-    var ui = new firebaseui.auth.AuthUI(auth);
-    // The start method will wait until the DOM is loaded.
+    ui = new firebaseui.auth.AuthUI(auth);
     ui.start('#firebaseui-auth-container', uiConfig);
   })
+
+  onDestroy(() => {
+    ui.delete();
+  })
+
 </script>
 
 <div class="w-full h-full flex flex-col justify-center items-center font-bold text-lg">

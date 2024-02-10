@@ -4,7 +4,7 @@
 	import { getAuth } from 'firebase/auth';
 	import '../app.css';
 	import { getFirestore } from 'firebase/firestore';
-	import { Button } from 'flowbite-svelte';
+	import { Button, DarkMode } from 'flowbite-svelte';
 
   const firebaseConfig = {
     apiKey: "AIzaSyCjUnR1Eydjr3qxouIl4fxiXyQvG2auUj8",
@@ -22,7 +22,7 @@
 </script>
 
 <FirebaseApp {auth} {firestore}>
-  <div class="flex flex-col w-full h-screen">
+  <div class="flex flex-col w-full h-screen dark:bg-gray-800 dark:text-white">
     <div class="w-full bg-primary-600 h-20 flex flex-row items-center p-5">
       <a href="/"><h2 class="text-white font-bold text-lg">SvelteFucker</h2></a>
       <div class="flex-auto"/>
@@ -32,6 +32,7 @@
       <SignedOut>
         <Button href="/login">Login</Button>
       </SignedOut>
+      <DarkMode btnClass="w-5"/>
     </div>
 
     <div class="flex-auto">
