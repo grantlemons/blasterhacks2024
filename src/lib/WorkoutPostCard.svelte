@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { getFirestore } from 'firebase/firestore';
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
 	import { Card, Spinner } from 'flowbite-svelte';
 	import { docStore } from 'sveltefire';
 	import type { WorkoutPost } from './workoutPost';
@@ -9,7 +10,8 @@
 	import humanizeTime from './humanizeTime';
 	import { onDestroy, onMount } from 'svelte';
 
-	export let workoutId: string;
+        export let workoutId: string;
+  const storage = getStorage(); // create a root reference
 
 	let exists = true;
 	let timestring = 'seconds ago';
@@ -20,6 +22,18 @@
 			? docStore<PublicUserData>(getFirestore(), `publicUserData/${$workout.userId}`)
 			: null;
 	$: workout && updateString();
+
+        function setimgsrc(img) {
+          if ($workout != null && $workout.imagePath != null) {
+            getDownloadURL(ref(storage, $workout.imagePath))
+              .then((url) => {
+                img.src = url;
+              })
+              .catch((error) => {
+                console.log('There was an error when fetching the image from the database:', error);
+              });
+          }
+        };
 
 	function updateString() {
 		if ($workout != null) timestring = humanizeTime($workout.timestamp);
@@ -43,7 +57,7 @@
 			<div class="flex-auto" />
 			<h2 class="font-bold">{startCase($workout.kind)}</h2>
 		</div>
-		<img src="/lukas.jpg" class="rounded" alt="Lukas Werner" />
+    <img use:setimgsrc class="rounded"/>
 		<p>{$workout.description}</p>
 		<p><em>{timestring}</em></p>
 	{:else}

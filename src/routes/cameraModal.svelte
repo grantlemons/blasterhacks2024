@@ -1,6 +1,7 @@
 <script lang='ts'>
-  import { Button, Modal } from 'flowbite-svelte';
+  import { Button, Input, Modal } from 'flowbite-svelte';
   import { uploadImage } from '../lib/uploadImage.ts';
+  import { insertWorkoutPost } from '../lib/workoutPost.ts';
 
   export let showModal;
 
@@ -11,6 +12,7 @@
   let photoSrc;
   $: photoSrc = usingCamera ? null : photoSrc; // hide the preview image when taking a new photo
   let video;
+  let description;
 
   const width = 640;
   let height = 0; // automatically computed based on width (I think)
@@ -30,6 +32,8 @@
     const context = canvas.getContext('2d');
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
+    context.translate(canvas.width, 0);
+    context.scale(-1,1);
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
     const data = canvas.toDataURL('image/png');
@@ -50,11 +54,19 @@
       });
       video.srcObject = null;
     }
+    description = null;
   }
 
-  function postImage() {
-    canvas.toBlob(uploadImage, 'image/png');
+  async function postImage() {
+    const fname = `images/${crypto.randomUUID()}.png`;
+    canvas.toBlob((blob) => { uploadImage(blob, fname); }, 'image/png');
+    await insertWorkoutPost(
+      'placeholder kind',
+      description,
+      fname,
+    );
     showModal = false;
+    stopCamera();
   }
 
 </script>
@@ -66,9 +78,12 @@
   <!-- Must use this hacky workaround because many mainstream browsers (most notably Safari) don't support ImageCapture. https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture/ImageCapture#browser_compatibility -->
   <canvas bind:this={canvas} style="display: none"></canvas>
   {#if !usingCamera}
-    <p>Does this look good?</p>
+    <h1>Does this look good?</h1>
   {/if}
   <img src={photoSrc} class="rounded-lg" />
+  {#if !usingCamera}
+    <Input bind:value={description} type="text" placeholder="Add a description here" class="w-full" id="default-input" />
+  {/if}
   <footer slot="footer" class="grow flex justify-center space-x-4">
     {#if usingCamera}
       <Button on:click={takePhoto} class="block">take photo</Button>
