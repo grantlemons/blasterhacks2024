@@ -33,7 +33,7 @@
 
 <FirebaseApp {auth} {firestore}>
 	<div class="flex flex-col w-full h-screen dark:bg-gray-800 dark:text-white">
-		<div class="w-full bg-primary-600 h-20 flex flex-row items-center p-5">
+		<div class="w-full bg-primary-600 h-20 flex flex-row items-center space-x-4 p-5">
 			<a href="/"><h2 class="text-white font-bold text-lg">StandUp</h2></a>
 			<div class="flex-auto" />
 			<SignedIn let:user>
