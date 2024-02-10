@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { getAuth, GoogleAuthProvider, EmailAuthProvider } from 'firebase/auth';
+	import { getAuth, signInWithPopup, GoogleAuthProvider, EmailAuthProvider } from 'firebase/auth';
 	import * as firebaseui from 'firebaseui';
 	import 'firebaseui/dist/firebaseui.css';
 	import { onDestroy, onMount } from 'svelte';
@@ -22,7 +22,8 @@
 		}
 		var uiConfig = {
 			signInSuccessUrl: '/user',
-			signInOptions: [GoogleAuthProvider.PROVIDER_ID]
+			signInOptions: [GoogleAuthProvider.PROVIDER_ID],
+			signInFlow: 'popup'
 		};
 
 		ui = new firebaseui.auth.AuthUI(auth);
