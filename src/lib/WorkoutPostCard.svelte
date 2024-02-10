@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getFirestore } from 'firebase/firestore';
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
+	import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 	import { Card, Spinner } from 'flowbite-svelte';
 	import { docStore } from 'sveltefire';
 	import type { WorkoutPost } from './workoutPost';
@@ -10,8 +10,8 @@ import { getStorage, ref, getDownloadURL } from "firebase/storage";
 	import humanizeTime from './humanizeTime';
 	import { onDestroy, onMount } from 'svelte';
 
-        export let workoutId: string;
-  const storage = getStorage(); // create a root reference
+	export let workoutId: string;
+	const storage = getStorage(); // create a root reference
 
 	let exists = true;
 	let timestring = 'seconds ago';
@@ -23,17 +23,17 @@ import { getStorage, ref, getDownloadURL } from "firebase/storage";
 			: null;
 	$: workout && updateString();
 
-        function setimgsrc(img) {
-          if ($workout != null && $workout.imagePath != null) {
-            getDownloadURL(ref(storage, $workout.imagePath))
-              .then((url) => {
-                img.src = url;
-              })
-              .catch((error) => {
-                console.log('There was an error when fetching the image from the database:', error);
-              });
-          }
-        };
+	function setimgsrc(img) {
+		if ($workout != null && $workout.imagePath != null) {
+			getDownloadURL(ref(storage, $workout.imagePath))
+				.then((url) => {
+					img.src = url;
+				})
+				.catch((error) => {
+					console.log('There was an error when fetching the image from the database:', error);
+				});
+		}
+	}
 
 	function updateString() {
 		if ($workout != null) timestring = humanizeTime($workout.timestamp);
@@ -50,17 +50,17 @@ import { getStorage, ref, getDownloadURL } from "firebase/storage";
 </script>
 
 <Card class="hover:scale-[1.02] transition-all bg-gray-100 dark:bg-gray-700">
-  {#if $workout != null && $user != null}
-    <div class="flex flex-row items-center w-full [&>*]:p-1">
-      <UserAvatar userId={$workout.userId}/>
-      <h2 class="font-bold"> {$user.displayName}</h2>
-      <div class="flex-auto"/>
-      <h2 class="font-bold">{startCase($workout.kind)}</h2>
-    </div>
-    <img src="/lukas.jpg" class="rounded"/>
-    <p>{$workout.description}</p>
-    <p><em>{timestring}</em></p>
-  {:else}
-    <Spinner/>
-  {/if}
+	{#if $workout != null && $user != null}
+		<div class="flex flex-row items-center w-full [&>*]:p-1">
+			<UserAvatar userId={$workout.userId} />
+			<h2 class="font-bold">{$user.displayName}</h2>
+			<div class="flex-auto" />
+			<h2 class="font-bold">{startCase($workout.kind)}</h2>
+		</div>
+		<img src="/lukas.jpg" class="rounded" />
+		<p>{$workout.description}</p>
+		<p><em>{timestring}</em></p>
+	{:else}
+		<Spinner />
+	{/if}
 </Card>
