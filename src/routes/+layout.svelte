@@ -7,7 +7,6 @@
 	import { getMessaging, getToken } from 'firebase/messaging';
 	import '../app.css';
 	import { getFirestore } from 'firebase/firestore';
-	import requestNotify from '$lib/requestNotify';
 	import { publishPublicUserData } from '$lib/publicUserData';
 	import UserAvatar from '$lib/UserAvatar.svelte';
 	import LogoWithText from '$lib/LogoWithText.svelte';
@@ -30,7 +29,31 @@
 	getToken(messaging, {
 		vapidKey:
 			'BGK8g4omXiFrAHqvsH70r1r6CqAT-lmXQm5wYY7W6AqC1_PS1gNSBZj2ciVCGbC8BYrIUKH_nwlq-Ad55DI8wuY'
-	});
+	})
+		.then((currentToken) => {
+			if (currentToken) {
+				// Send the token to your server and update the UI if necessary
+				console.log(`Token: ${currentToken}`);
+				fetch('https://standup-interval-ntfy.fly.dev/register', {
+					method: 'POST',
+					mode: 'cors',
+					cache: 'no-cache',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						token: currentToken
+					})
+				}).then((response) => {
+					console.log('Successfully sent token to registrar', response);
+				});
+			} else {
+				console.log('No registration token available. Request permission to generate one.');
+			}
+		})
+		.catch((err) => {
+			console.log('An error occurred while retrieving token. ', err);
+		});
 </script>
 
 <FirebaseApp {auth} {firestore}>
