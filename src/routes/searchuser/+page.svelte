@@ -18,7 +18,7 @@
       <div class="[&>*]:mb-4 pb-16">
           {#each results.entries() as [foundUserId, foundUser]}
             <a class="block mb-4" href={`/user/${foundUserId}`}>
-              <Card class="max-w-full transition-all hover:translate-x-2 flex flex-row items-center justify-between">
+              <Card class="max-w-full sm:p-4 transition-all hover:translate-x-2 flex flex-row items-center justify-between">
                 <UserAvatar userId={foundUserId}/>
                 <h2 class="font-bold text-lg">{foundUser.displayName}</h2>
               </Card>
