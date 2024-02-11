@@ -16,7 +16,6 @@
       <Search placeholder="Search for friends..." bind:value={search}/>
     
       <div class="[&>*]:mb-4">
-        <Doc ref={`friends/${user.uid}`} let:data>
           {#each results.entries() as [foundUserId, foundUser]}
             <a href={`/user/${foundUserId}`} class="mb-4">
               <Card class="transition-all hover:translate-x-2 flex flex-row items-center justify-between mb-4">
@@ -25,7 +24,6 @@
               </Card>
             </a>
           {/each}
-        </Doc>
       </div>
     </div>
   </div>
