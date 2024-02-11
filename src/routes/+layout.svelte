@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { FirebaseApp, SignedIn, SignedOut } from 'sveltefire';
+  import { BottomNav, BottomNavItem, Button, DarkMode, Skeleton, ImagePlaceholder } from 'flowbite-svelte';
+  import { GridSolid, SearchOutline, UserSolid } from 'flowbite-svelte-icons';
 	import { initializeApp } from 'firebase/app';
 	import { getAuth } from 'firebase/auth';
 	import { getMessaging, getToken } from 'firebase/messaging';
 	import '../app.css';
 	import { getFirestore } from 'firebase/firestore';
-	import { Button, DarkMode } from 'flowbite-svelte';
 	import requestNotify from '$lib/requestNotify';
 	import { publishPublicUserData } from '$lib/publicUserData';
 	import UserAvatar from '$lib/UserAvatar.svelte';
@@ -51,5 +52,18 @@
 		<div class="flex-auto overflow-auto">
 			<slot />
 		</div>
+
+    <BottomNav position="absolute" classInner="grid-cols-3">
+      <BottomNavItem btnName="Grid">
+        <GridSolid class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" />
+      </BottomNavItem>
+      <BottomNavItem btnName="Search">
+        <SearchOutline class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" />
+      </BottomNavItem>
+      <BottomNavItem btnName="User">
+        <UserSolid class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" />
+      </BottomNavItem>
+    </BottomNav>
+
 	</div>
 </FirebaseApp>
