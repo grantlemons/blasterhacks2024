@@ -61,6 +61,9 @@
 		let seed = data?.workout_seed ?? '-1';
 		let timestamp = data?.timestamp ?? '-1';
 
+    console.log(seed)
+    console.log(timestamp)
+
 		let localStorage = window.localStorage;
 		localStorage.setItem('workout_seed', seed);
 		localStorage.setItem('timestamp', timestamp);

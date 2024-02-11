@@ -4,6 +4,7 @@
   import ReppableInstructions from "$lib/ReppableInstructions.svelte";
 
 	let timestamp = window.localStorage.getItem("timestamp");
+  $: unixStamp = new Date(timestamp).getTime();
 	let workout_seed = window.localStorage.getItem("workout_seed");
 	console.log(timestamp, workout_seed);
 	let workout_count = 6;
@@ -11,7 +12,7 @@
 </script>
 
 {#if workout_index == 0}
-<GenericInstructions workoutKind="callMom">
+<GenericInstructions workoutKind="callMom" pushTimeStamp={unixStamp}>
   <div slot="instructions-content">
     <Heading tag="h1" class="block my-4">Call your mom</Heading>
     <article>
@@ -21,7 +22,7 @@
   </div>
 </GenericInstructions>
 {:else if workout_index == 1}	
-<GenericInstructions workoutKind="interpretiveDance">
+<GenericInstructions workoutKind="interpretiveDance" pushTimeStamp={unixStamp}>
   <div slot="instructions-content">
     <Heading tag="h1" class="block my-4">Do an interpretive dance</Heading>
     <article>
@@ -30,19 +31,19 @@
   </div>
 </GenericInstructions>
 {:else if workout_index == 2}	
-<GenericInstructions workoutKind="jumpingJacks">
+<GenericInstructions workoutKind="jumpingJacks" pushTimeStamp={unixStamp}>
   <ReppableInstructions reps={20} slot="instructions-content">
     <svelte:fragment slot="workout-kind">Jumping Jacks</svelte:fragment>
   </ReppableInstructions>
 </GenericInstructions>
 {:else if workout_index == 3}	
-<GenericInstructions workoutKind="pushups">
+<GenericInstructions workoutKind="pushups" pushTimeStamp={unixStamp}>
   <ReppableInstructions reps={10} slot="instructions-content">
     <svelte:fragment slot="workout-kind">Push-ups</svelte:fragment>
   </ReppableInstructions>
 </GenericInstructions>
 {:else if workout_index == 4}	
-<GenericInstructions workoutKind="walk">
+<GenericInstructions workoutKind="walk" pushTimeStamp={unixStamp}>
   <div slot="instructions-content">
     <Heading tag="h1" class="block my-4">Take a quick walk</Heading>
     <article>
@@ -51,7 +52,7 @@
   </div>
 </GenericInstructions>
 {:else if workout_index == 5}	
-<GenericInstructions workoutKind="wallSit">
+<GenericInstructions workoutKind="wallSit" pushTimeStamp={unixStamp}>
   <ReppableInstructions reps={15} slot="instructions-content">
     <svelte:fragment slot="workout-kind">Wall Sits</svelte:fragment>
   </ReppableInstructions>

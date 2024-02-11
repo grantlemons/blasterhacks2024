@@ -5,6 +5,7 @@
 	import type { WorkoutKind } from '$lib/workoutPost';
 
 	export let workoutKind: WorkoutKind;
+  export let pushTimeStamp: number;
 
 	let showModal = false;
 </script>
@@ -14,7 +15,7 @@
 		<SignedIn>
 			<slot name="instructions-content" />
 			<Button class="mt-4" on:click={() => (showModal = true)}>Upload a post</Button>
-			<CameraModal bind:showModal {workoutKind} />
+			<CameraModal bind:showModal {workoutKind} {pushTimeStamp}/>
 		</SignedIn>
 		<SignedOut>
 			<p>You must log in to participate in the workout.</p>

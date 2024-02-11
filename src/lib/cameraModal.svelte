@@ -2,9 +2,11 @@
 	import { Button, Input, Modal } from 'flowbite-svelte';
 	import { uploadImage } from '../lib/uploadImage.ts';
 	import { insertWorkoutPost, type WorkoutKind } from '../lib/workoutPost.ts';
+	import { goto } from '$app/navigation';
 
 	export let showModal = false;
 	export let workoutKind: WorkoutKind;
+  export let pushTimeStamp: number;
 
 	let usingCamera = false;
 	$: usingCamera = showModal;
@@ -65,14 +67,17 @@
 	async function postImage() {
 		let fname = null;
 		if (photoSrc != null) {
-			fname = `images/${crypto.randomUUID()}.png`;
-			canvas.toBlob((blob) => {
-				uploadImage(blob, fname);
-			}, 'image/png');
+			  fname = `images/${crypto.randomUUID()}.png`;
+			  await new Promise((resolve, reject) =>{
+          canvas.toBlob((blob) => {
+			      uploadImage(blob, fname).then(resolve);
+			    }, 'image/png')
+        });
 		}
-		await insertWorkoutPost(workoutKind, description, fname);
+		await insertWorkoutPost(workoutKind, description, pushTimeStamp, fname);
 		showModal = false;
 		stopCamera();
+    goto('/');
 	}
 </script>
 

@@ -19,18 +19,12 @@ messaging.onBackgroundMessage((payload) => {
   localStorage.setItem('workout_seed', data.workout_seed);
   localStorage.setItem('timestamp', data.timestamp);
 
-  localforage.setItem('workout_seed', data.workout_seed);
-  localforage.setItem('timestamp', data.timestamp);
 });
 
 function handleClick(event) {
   event.notification.close();
-  // Open the url you set on notification.data
-
+  // Open the url you set on notification.
   let localStorage = window.localStorage;
-
-  localforage.setItem('workout_seed', data.workout_seed);
-  localforage.setItem('timestamp', data.timestamp);
 
   localStorage.setItem('workout_seed', data.workout_seed);
   localStorage.setItem('timestamp', data.timestamp);

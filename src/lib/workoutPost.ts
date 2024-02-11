@@ -9,6 +9,8 @@ export type WorkoutPost = {
 	userId: string;
 	/** Unix time in milliseconds */
 	timestamp: number;
+	/** Unix time in milliseconds */
+  timeSincePush: number;
 };
 
 export const allWorkoutKinds = [
@@ -37,7 +39,9 @@ export function workoutCollection(): CollectionReference {
 export async function insertWorkoutPost(
 	kind: WorkoutKind,
 	description: string,
-	imagePath: string | null = null
+  /** Unix time in milliseconds */
+  pushTimestamp: number,
+	imagePath: string | null = null,
 ): Promise<string | null> {
 	let currentUser = getAuth().currentUser;
 
@@ -50,7 +54,8 @@ export async function insertWorkoutPost(
 		description,
 		imagePath,
 		userId: currentUser.uid,
-		timestamp: Date.now()
+		timestamp: Date.now(),
+    timeSincePush: Date.now() - pushTimestamp,
 	});
 
 	return ref.id;
