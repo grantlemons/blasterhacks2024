@@ -3,7 +3,7 @@
 	$: stroke = color;
 </script>
 
-<svg width="100%" height="100%" viewBox="0 0 2621 877" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+<svg width="60%" height="60%" viewBox="0 0 2621 877" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
     <g transform="matrix(1,0,0,1,-1711,-462)">
         <g id="Logo-and-Typefont" serif:id="Logo and Typefont" transform="matrix(1.67459,0,0,1,-1154.94,-0.639507)">
             <rect x="1711.43" y="462.64" width="1564.6" height="876.487" style="fill:none;"/>
