@@ -42,6 +42,10 @@
     stopCamera();
   }
 
+  function skipPhoto() {
+    stopCamera();
+  }
+
   function tryAgain() {
     usingCamera = true;
     photoSrc = null;
@@ -59,15 +63,18 @@
   }
 
   async function postImage() {
-    const fname = `images/${crypto.randomUUID()}.png`;
-    canvas.toBlob((blob) => { uploadImage(blob, fname); }, 'image/png');
-    await insertWorkoutPost(
-      workoutKind,
-      description,
-      fname,
-    );
-    showModal = false;
-    stopCamera();
+    let fname = null;
+    if (photoSrc != null) {
+      fname = `images/${crypto.randomUUID()}.png`;
+      canvas.toBlob((blob) => { uploadImage(blob, fname); }, 'image/png');
+    }
+      await insertWorkoutPost(
+        workoutKind,
+        description,
+        fname,
+      );
+      showModal = false;
+      stopCamera();
   }
 
 </script>
@@ -78,7 +85,7 @@
   {/if}
   <!-- Must use this hacky workaround because many mainstream browsers (most notably Safari) don't support ImageCapture. https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture/ImageCapture#browser_compatibility -->
   <canvas bind:this={canvas} style="display: none"></canvas>
-  {#if !usingCamera}
+  {#if !usingCamera && photoSrc != null}
     <h1>Does this look good?</h1>
   {/if}
   <img src={photoSrc} class="rounded-lg" />
@@ -87,6 +94,7 @@
   {/if}
   <footer slot="footer" class="grow flex justify-center space-x-4">
     {#if usingCamera}
+      <Button on:click={skipPhoto} color="alternative" class="block">no photo this time</Button>
       <Button on:click={takePhoto} class="block">take photo</Button>
     {:else}
       <Button on:click={tryAgain} color="alternative" class="block">try again</Button>
