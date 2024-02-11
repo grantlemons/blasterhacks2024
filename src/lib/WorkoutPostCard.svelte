@@ -51,7 +51,7 @@
 
 <Card class="bg-grey-100 dark:bg-grey-700 hover:scale-[1.02] transition-all">
 	{#if $workout != null && $user != null}
-		<div class="flex flex-row items-center w-full [&>*]:p-1">
+		<div class="flex flex-row items-center w-full mb-2 [&>*]:p-1">
 			<UserAvatar userId={$workout.userId} />
 			<h2 class="font-bold">{$user.displayName}</h2>
 			<div class="flex-auto" />
