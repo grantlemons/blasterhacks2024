@@ -26,7 +26,7 @@ func main() {
 			Title: "Lets Fuckign GO!",
 			Body:  "Time for a workout!",
 		},
-		Condition: "app.id == '1:930780589668:web:6472e046a1bddfa5b0f971'",
+		Topic: "push_notifs",
 	})
 	if err != nil {
 		log.Fatalln(err)
