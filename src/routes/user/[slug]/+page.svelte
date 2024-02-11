@@ -1,11 +1,10 @@
 <script lang="ts">
 	import Circles from "$lib/Circles.svelte";
 import UserAvatar from "$lib/UserAvatar.svelte";
-	import { isFriend, addFriend, removeFriend } from "$lib/friends";
+	import { addFriend, removeFriend } from "$lib/friends";
 	import { publicUserDataCollection } from "$lib/publicUserData";
 	import { doc } from "firebase/firestore";
-	import { Button, Card, Spinner } from "flowbite-svelte";
-	import { size } from "lodash-es";
+	import { Button, Card } from "flowbite-svelte";
 	import { Doc, SignedIn } from "sveltefire";
 
   export let data; 
@@ -36,7 +35,6 @@ import UserAvatar from "$lib/UserAvatar.svelte";
               <Button on:click={() => addFriend(pageData.slug)}>Friend</Button>
             {/if}
           </div>
-          <Spinner slot="loading"></Spinner>
         </Doc>
       </Doc>
     </Card>
