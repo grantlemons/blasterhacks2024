@@ -8,7 +8,6 @@
 <SignedIn let:user>
   <div class="w-full flex flex-col items-center gap-4">
     <Doc ref={`friends/${user.uid}`} let:data>
-    {JSON.stringify(data.friends)}
       {#if data.friends.length != 0}
   	    <Collection ref={query(workoutCollection(), where("userId", 'in', data.friends))} let:data>
   	    	{#each data as post}
