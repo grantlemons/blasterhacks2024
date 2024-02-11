@@ -11,12 +11,12 @@
 <div class="flex flex-col items-center h-full p-4">
   <main class="w-full max-w-xl">
     <Heading tag="h2" class="text-center mt-6 mb-10">Friends</Heading>
-    <div class="flex flex-col items-center pb-16">
+    <div class="flex flex-col items-center">
       <SignedIn let:user>
         <Doc ref={doc(friendsCollection(), user.uid)} let:data>
           {#each data.friends as friendId}
             <Doc ref={doc(publicUserDataCollection(), friendId)} let:data>
-              <div class="mb-4 transition-all hover:scale-[1.02] w-full grow">
+              <div class="mt-4 transition-all hover:scale-[1.02] w-full grow">
                 <Card class="flex flex-row items-center justify-between max-w-full sm:p-4" on:click={() => goto(`/user/${friendId}`)}>
                   <UserAvatar userId={friendId}/>
                   <h2 class="font-bold text-xl">{data.displayName}</h2>

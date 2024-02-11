@@ -68,7 +68,7 @@
 </script>
 
 <FirebaseApp {auth} {firestore}>
-	<div class="flex flex-col w-full h-screen space-y-4 dark:bg-gray-800 dark:text-white">
+	<div class="flex flex-col w-full h-screen space-y-4 dark:bg-gray-800 dark:text-white pb-20">
 		<div class="w-full bg-primary-600 h-20 flex flex-row items-center space-x-4 p-5">
 			<a href="/"><LogoWithText color="white" /></a>
 			<div class="flex-auto" />
