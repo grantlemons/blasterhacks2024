@@ -1,9 +1,9 @@
 <script lang="ts">
   import { Heading, Li, List } from "flowbite-svelte";
-  import GenericInstructions from '../../lib/instructions/generic.svelte';
+  import GenericInstructions from '../../../lib/instructions/generic.svelte';
 </script>
 
-<GenericInstructions>
+<GenericInstructions workoutKind="walk">
   <div slot="instructions-content">
     <Heading tag="h1" class="block my-4">Take a quick walk</Heading>
     <article>

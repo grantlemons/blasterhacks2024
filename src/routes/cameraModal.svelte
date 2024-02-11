@@ -1,9 +1,10 @@
 <script lang='ts'>
   import { Button, Input, Modal } from 'flowbite-svelte';
   import { uploadImage } from '../lib/uploadImage.ts';
-  import { insertWorkoutPost } from '../lib/workoutPost.ts';
+  import { insertWorkoutPost, type WorkoutKind } from '../lib/workoutPost.ts';
 
-  export let showModal;
+  export let showModal = false;
+  export let workoutKind: WorkoutKind;
 
   let usingCamera = false;
   $: usingCamera = showModal;
@@ -61,7 +62,7 @@
     const fname = `images/${crypto.randomUUID()}.png`;
     canvas.toBlob((blob) => { uploadImage(blob, fname); }, 'image/png');
     await insertWorkoutPost(
-      'placeholder kind',
+      workoutKind,
       description,
       fname,
     );
