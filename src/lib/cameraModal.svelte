@@ -15,7 +15,7 @@
 	let photoSrc;
 	$: photoSrc = usingCamera ? null : photoSrc; // hide the preview image when taking a new photo
 	let video;
-	let description;
+	let description = "";
 
 	const width = 640;
 	let height = 0; // automatically computed based on width (I think)

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Circles from "$lib/Circles.svelte";
+	import InformedCircles from "$lib/InformedCircles.svelte";
   import UserAvatar from "$lib/UserAvatar.svelte";
 	import { addFriend, removeFriend } from "$lib/friends";
 	import { publicUserDataCollection } from "$lib/publicUserData";
@@ -25,7 +26,7 @@
     <Card class="w-[400px] h-full p-0">
       <Doc ref={doc(publicUserDataCollection(), data.slug)} let:data>
         <Collection ref={query(workoutCollection(), where('userId', '==', pageData.slug))} let:data={docs}>
-          <Circles max={[70, 30]} values={[docs.filter(v => v.timestamp > Date.now() - 1000 * 60 * 60 * 24 * 7).length, 1]} width="100%"/>
+          <InformedCircles workouts={docs} width="100%"/>
   
           <div class="flex flex-col justify-center items-center">
             <h1 class="text-2xl font-bold">{data.displayName}</h1>
