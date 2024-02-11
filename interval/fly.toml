@@ -1,0 +1,28 @@
+# fly.toml app configuration file generated for standup-interval-ntfy on 2024-02-10T19:46:23-07:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "standup-interval-ntfy"
+primary_region = "den"
+
+[build]
+builder = "paketobuildpacks/builder:base"
+buildpacks = ["gcr.io/paketo-buildpacks/go"]
+
+[env]
+PORT = "8080"
+
+[http_service]
+internal_port = 8080
+force_https = true
+auto_stop_machines = true
+auto_start_machines = true
+min_machines_running = 1
+processes = ["app"]
+
+
+[[vm]]
+cpu_kind = "shared"
+cpus = 1
+memory_mb = 256
