@@ -23,19 +23,21 @@ import UserAvatar from "$lib/UserAvatar.svelte";
   <div class="flex flex-col items-center h-full">
     <Card class="w-[400px] h-full p-0">
       <Doc ref={doc(publicUserDataCollection(), data.slug)} let:data>
-        <Doc ref={`friends/${user.uid}`} let:data={s}>
           <Circles max={[100, 100, 100]} values={[10, 40, 80]} width="100%"/>
   
           <div class="flex flex-col justify-center items-center">
             <h1 class="text-2xl font-bold">{data.displayName}</h1>
   
-            {#if s.friends.includes(pageData.slug)}
-              <Button on:click={() => removeFriend(pageData.slug)}>Unfriend</Button>
-            {:else}
-              <Button on:click={() => addFriend(pageData.slug)}>Friend</Button>
-            {/if}
+            <Doc ref={`friends/${user.uid}`} let:data={s}>
+              {#if s.friends.includes(pageData.slug)}
+                <Button on:click={() => removeFriend(pageData.slug)}>Unfriend</Button>
+              {:else}
+                <Button on:click={() => addFriend(pageData.slug)}>Friend</Button>
+              {/if}
+
+              <Button slot="loading" on:click={() => addFriend(pageData.slug)}>Friend</Button>
+            </Doc>
           </div>
-        </Doc>
       </Doc>
     </Card>
   </div>
