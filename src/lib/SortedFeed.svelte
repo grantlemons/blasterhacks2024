@@ -6,6 +6,8 @@
 	});
 </script>
 
-{#each sorted as post}
-	<WorkoutPostCard workoutId={post.id} />
-{/each}
+<div class="px-4 gap-4">
+  {#each sorted as post}
+    <WorkoutPostCard workoutId={post.id} />
+  {/each}
+</div>
