@@ -12,13 +12,13 @@
 
 <SignedIn let:user>
   <div class="flex flex-col items-center h-full p-4">
-    <div class="w-full h-full">
+    <div class="w-full max-w-xl h-full">
       <Search placeholder="Search for friends..." bind:value={search} class="mb-4"/>
     
       <div class="[&>*]:mb-4 pb-16">
           {#each results.entries() as [foundUserId, foundUser]}
             <a class="block mb-4" href={`/user/${foundUserId}`}>
-              <Card class="max-w-xl transition-all hover:translate-x-2 flex flex-row items-center justify-between">
+              <Card class="max-w-full transition-all hover:translate-x-2 flex flex-row items-center justify-between">
                 <UserAvatar userId={foundUserId}/>
                 <h2 class="font-bold text-lg">{foundUser.displayName}</h2>
               </Card>
