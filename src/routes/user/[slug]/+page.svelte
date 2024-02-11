@@ -6,7 +6,7 @@
 	import { publicUserDataCollection } from "$lib/publicUserData";
 	import { workoutCollection } from "$lib/workoutPost.js";
 	import { doc, query, where } from "firebase/firestore";
-	import { Button, Card } from "flowbite-svelte";
+	import { Button, Card, Heading } from "flowbite-svelte";
 	import { Collection, Doc, SignedIn } from "sveltefire";
 
   export let data; 
@@ -29,7 +29,7 @@
           <InformedCircles workouts={docs} width="100%"/>
   
           <div class="flex flex-col justify-center items-center">
-            <h1 class="text-2xl font-bold">{data.displayName}</h1>
+            <Heading tag="h1" class="text-center mt-8 mb-12">{data.displayName}</Heading>
   
             <Doc ref={`friends/${user.uid}`} let:data={s}>
               {#if s.friends.includes(pageData.slug)}
