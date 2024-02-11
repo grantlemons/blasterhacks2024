@@ -8,9 +8,9 @@
 <SignedIn let:user>
   <div class="w-full flex flex-col items-center gap-4">
     <Doc ref={`friends/${user.uid}`} let:data>
-      {#if data.friends.length != 0}
+      {#if data.friends.length != 0 && data != null}
   	    <Collection ref={query(workoutCollection(), where("userId", 'in', data.friends))} let:data>
-			<SortedFeed {data} />
+			    <SortedFeed {data} />
   	    </Collection>
       {:else}
         <p class="text-center"><em>You don't have any StandUp friends yet. <br/><a href="/searchuser">Go find some!</a></em></p>
