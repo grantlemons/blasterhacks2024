@@ -47,9 +47,9 @@ func main() {
 
 	go func(msgr *messaging.Client) {
 		for {
-			randTime := rand.Intn(15)*30 + 15
+			randTime := (rand.Intn(20) - 10) + 30
 			l.Printf("sleep time %d\n", randTime)
-			time.Sleep(time.Duration(randTime) * time.Second)
+			time.Sleep(time.Duration(randTime) * time.Minute)
 			id, err := SendNotification(msgr, "StandUp", "Time to stand up and exercise", rand.Intn(100000000))
 			if err != nil {
 				l.Printf("sending %s notification %s", id, err.Error())
@@ -60,6 +60,17 @@ func main() {
 	}(msgr)
 
 	r := mux.NewRouter()
+
+	r.Path("/notify").HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		id, err := SendNotification(msgr, "StandUp", "Time to stand up and exercise", rand.Intn(100000000))
+		if err != nil {
+			l.Printf("sending %s notification %s", id, err.Error())
+		} else {
+			l.Printf("sending %s notification %s", id, "no-error")
+		}
+		w.WriteHeader(http.StatusAccepted)
+	})
+
 	r.Path("/register").Methods("POST", "OPTIONS").HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
 		w.Header().Set("Access-Control-Allow-Origin", "https://neovim-btw.web.app")

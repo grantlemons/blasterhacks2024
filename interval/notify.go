@@ -13,6 +13,7 @@ func SendNotification(msgr *messaging.Client, title string, body string, workout
 		Data: map[string]string{
 			"workout_seed": strconv.Itoa(workout),
 			"timestamp":    time.Now().Format(time.RFC3339),
+			"url":          "https://neovim-btw.web.app/workout",
 		},
 		Webpush: &messaging.WebpushConfig{
 			Notification: &messaging.WebpushNotification{
