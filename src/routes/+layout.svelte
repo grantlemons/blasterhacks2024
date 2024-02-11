@@ -54,13 +54,13 @@
 		</div>
 
     <BottomNav position="absolute" classInner="grid-cols-3">
-      <BottomNavItem btnName="Grid">
+      <BottomNavItem btnName="Grid" href="/">
         <GridSolid class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" />
       </BottomNavItem>
-      <BottomNavItem btnName="Search">
+      <BottomNavItem btnName="Search" href="/searchuser">
         <SearchOutline class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" />
       </BottomNavItem>
-      <BottomNavItem btnName="User">
+      <BottomNavItem btnName="Friends" href="/friends">
         <UserSolid class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" />
       </BottomNavItem>
     </BottomNav>
