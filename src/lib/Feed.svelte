@@ -1,5 +1,5 @@
 <script lang="ts">
-	import WorkoutPostCard from '$lib/WorkoutPostCard.svelte';
+	import SortedFeed from './SortedFeed.svelte';
 	import { workoutCollection } from '$lib/workoutPost';
 	import { query, where } from 'firebase/firestore';
 	import { Collection, Doc, SignedIn } from 'sveltefire';
@@ -10,9 +10,7 @@
     <Doc ref={`friends/${user.uid}`} let:data>
       {#if data.friends.length != 0}
   	    <Collection ref={query(workoutCollection(), where("userId", 'in', data.friends))} let:data>
-  	    	{#each data as post}
-  	    		<WorkoutPostCard workoutId={post.id} />
-  	    	{/each}
+			<SortedFeed {data} />
   	    </Collection>
       {:else}
         <p class="text-center"><em>You don't have any StandUp friends yet. <br/><a href="/searchuser">Go find some!</a></em></p>
