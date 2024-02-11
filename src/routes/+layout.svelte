@@ -54,7 +54,7 @@
 		</div>
 
     <BottomNav position="absolute" classInner="grid-cols-3">
-      <BottomNavItem btnName="Grid" href="/">
+      <BottomNavItem btnName="Feed" href="/">
         <GridSolid class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" />
       </BottomNavItem>
       <BottomNavItem btnName="Search" href="/searchuser">
