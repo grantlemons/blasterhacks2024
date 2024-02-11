@@ -11,14 +11,14 @@
 </script>
 
 <SignedIn let:user>
-  <div class="flex flex-col items-center h-full">
-    <div class="sm:w-[400px] h-full">
-      <Search placeholder="Search for friends..." bind:value={search}/>
+  <div class="flex flex-col items-center h-full p-4">
+    <div class="w-full h-full">
+      <Search placeholder="Search for friends..." bind:value={search} class="mb-4"/>
     
-      <div class="[&>*]:mb-4">
+      <div class="[&>*]:mb-4 pb-16">
           {#each results.entries() as [foundUserId, foundUser]}
-            <a href={`/user/${foundUserId}`} class="mb-4">
-              <Card class="transition-all hover:translate-x-2 flex flex-row items-center justify-between mb-4">
+            <a class="block mb-4" href={`/user/${foundUserId}`}>
+              <Card class="max-w-xl transition-all hover:translate-x-2 flex flex-row items-center justify-between">
                 <UserAvatar userId={foundUserId}/>
                 <h2 class="font-bold text-lg">{foundUser.displayName}</h2>
               </Card>
