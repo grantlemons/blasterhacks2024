@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { FirebaseApp, SignedIn, SignedOut } from 'sveltefire';
-  import { BottomNav, BottomNavItem, Button, DarkMode, Skeleton, ImagePlaceholder } from 'flowbite-svelte';
-  import { GridSolid, SearchOutline, UserSolid } from 'flowbite-svelte-icons';
+	import { BottomNav, BottomNavItem, Button, DarkMode } from 'flowbite-svelte';
+	import { GridSolid, SearchOutline, UserSolid } from 'flowbite-svelte-icons';
 	import { initializeApp } from 'firebase/app';
 	import { getAuth } from 'firebase/auth';
 	import { getMessaging, getToken } from 'firebase/messaging';
@@ -44,26 +44,28 @@
 					<span class="p-3 text-white">{user.displayName}</span>
 				</a>
 			</SignedIn>
-			<SignedOut>
-				<Button href="/login" on:click={requestNotify}>Login</Button>
-			</SignedOut>
 			<DarkMode btnClass="w-5 p-2 text-white" />
 		</div>
 		<div class="flex-auto overflow-auto">
 			<slot />
 		</div>
 
-    <BottomNav position="absolute" classInner="grid-cols-3">
-      <BottomNavItem btnName="Feed" href="/">
-        <GridSolid class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" />
-      </BottomNavItem>
-      <BottomNavItem btnName="Search" href="/searchuser">
-        <SearchOutline class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" />
-      </BottomNavItem>
-      <BottomNavItem btnName="Friends" href="/friends">
-        <UserSolid class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" />
-      </BottomNavItem>
-    </BottomNav>
-
+		<BottomNav position="absolute" classInner="grid-cols-3">
+			<BottomNavItem btnName="Grid" href="/">
+				<GridSolid
+					class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500"
+				/>
+			</BottomNavItem>
+			<BottomNavItem btnName="Search" href="/searchuser">
+				<SearchOutline
+					class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500"
+				/>
+			</BottomNavItem>
+			<BottomNavItem btnName="Friends" href="/friends">
+				<UserSolid
+					class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500"
+				/>
+			</BottomNavItem>
+		</BottomNav>
 	</div>
 </FirebaseApp>

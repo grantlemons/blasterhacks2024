@@ -1,5 +1,5 @@
 <script>
-	import CameraModal from "../cameraModal.svelte";
+	import CameraModal from "$lib/cameraModal.svelte";
 
 </script>
 
