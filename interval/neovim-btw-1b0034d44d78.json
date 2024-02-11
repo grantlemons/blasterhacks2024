@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "neovim-btw",
+  "private_key_id": "1b0034d44d78d16ef2ae93e70b28301cfbdf3279",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCTAP/Gg2XlfH+E\nVa6PE1ooe75TEBfQO2EUL4lTWeW/976jYYp18ejZp4I5IkKR/U1fQ92540w6Anxm\nPzi4OlG18hNgdyxW8/xi/dR06TXyJOOVGxQ262j6fnLSpI2LR63xj9peao4jjHNt\nxQ5GUEAy73TrmNyE9MO3RMkf+Spd/vB384cnOQhTXiRCpFhL1nyhxpqbifMYjndu\noUE3eKXqcmny5IJw4NwrJGtPmVtuZkMAHy/xn9Ibj/apLvC+fffoF1eVcJYvgZOC\nNodIZmzt7333JWFQ8BZeRs94MXOKdQOZDZfVqq1+m+r10MIdLsFh4EMiFPBWjOq3\nxjA/V2KPAgMBAAECggEAOVwWcXsr81OU3iogpqtCbrF6HicVY6cHxjyWNPPK9hDR\nTibtRABUfzkhUvHPT++qlRWCGtpaD/iQWcUpeJko8Pm4HdficTtaq7WnhMbKyeUi\n+DdMt/E7USKt4wtaP5KEiNE8v8KMG8rd72MIot8FbdqJoLRQt4BaLdSlNdifc3VD\nJSf7x8IVTjGLVoYucwJJT6czrf3YiEHLCt+vUgAweaqsO40OPJ24tNcxK8XQkSyk\nXPEcdaCZ34mqxDnANvNY1W/VCdtkk6wJsMy4ZQtwWzGftyZFk9CdLdWXYZu/S/x6\nlWY3vrpdWHPaJbNh0dm0g+5BamQ6idpB4Sa+TdpuAQKBgQDHTL8FlSjk15mUfxrK\nNANjGbyivAG7P23IAKPS3NuxKzN226/gR2a33tcVI/0xDhnJTKAFpEOYnveo8tCA\na1PlcknKzNNtW86h6CqTKG2JNo8Fp04hnW3dWWYm6KIO/Xsb4xLDQ0uC94itNEV3\n260DoSJ5lQxk9AO8ehQSjN6MzwKBgQC803pVSOJl35GHy17mDq/wJZDsKx6Y7u2i\n7ecQjfRES6XiFv4Tbd9RuNyiGo+/oShXKuSAh3QD/J6bf5+0rC+j7nK+8Q3HP+Qk\n2XOx9HI/jOkcPlJgUOYfPxLSNt8w5ZhprJn+NTVwk3oMNNCcVVVPGHMXlvzh5hJf\nlLRnaWy+QQKBgBC1GFZpeLImeNOADEjjL12BbNTfme2Ola9sjk9BAJHLo1bVd9r/\nYVcMsU8uYy1Xl0XOzKNsb9Y9jVl2cZAybygO+qyrmxXR2nKsOdV4UCZuknLQ4bXj\nsrAZrHyah+tlyIo/8PS5kXz7L1QFy8UOf2SMf41dt1pHMoD8Yu5jLMz1AoGAfERI\ny/utUxHw+ocyqwCbdNWkLGisOEV1irY6TMC/Mnr+bm5nQ24Ze/TG7r/APoLWw5bs\nzlFWXpFP6FHzTrnKmH4Ccfq98JTxlfatlz2iOoSHnRi+qbhT2dhukH2gINPYnCMF\nLTDjPHUx6vqPF3NpMyaKB8pMHnaFPPXmS/ArqoECgYEAwpVJfJyP8yy6QSqdRsbK\niNZDO+3OIk8uv7lzVKF5VW6dGXVKhYucsWEUKrFrbDeaZ0MpBvhG7CdTcPFLrKYg\nCRu6Y8x98aw/3PdEpb3PR3dHxQTPUsr8KddRKqHyke2J241BGQriuV91ApNb543p\nWvU/XwT+gofAOdOIPo+u0Kc=\n-----END PRIVATE KEY-----\n",
+  "client_email": "notify@neovim-btw.iam.gserviceaccount.com",
+  "client_id": "102927605157219477742",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/notify%40neovim-btw.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
