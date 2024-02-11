@@ -61,8 +61,8 @@
 		{#if $workout.imagePath}
 			<img use:setimgsrc class="rounded" alt={$workout.kind + '---' + $workout.description} />
 		{/if}
-		<p>{$workout.description}</p>
-		<p><em>{timestring}</em></p>
+		<p class="my-2">{$workout.description}</p>
+		<p><em class="text-sm">{timestring}</em></p>
 	{:else}
 		<Spinner />
 	{/if}
