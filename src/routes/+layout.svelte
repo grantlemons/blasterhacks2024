@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { FirebaseApp, SignedIn, SignedOut } from 'sveltefire';
+	import { FirebaseApp, SignedIn } from 'sveltefire';
 	import { BottomNav, BottomNavItem, Button, DarkMode } from 'flowbite-svelte';
 	import { GridSolid, SearchOutline, UserSolid } from 'flowbite-svelte-icons';
 	import { initializeApp } from 'firebase/app';
 	import { getAuth } from 'firebase/auth';
-	import { getMessaging, getToken } from 'firebase/messaging';
+	import { getMessaging, getToken, onMessage } from 'firebase/messaging';
 	import '../app.css';
 	import { getFirestore } from 'firebase/firestore';
 	import { publishPublicUserData } from '$lib/publicUserData';
@@ -54,6 +54,17 @@
 		.catch((err) => {
 			console.log('An error occurred while retrieving token. ', err);
 		});
+	onMessage(messaging, (payload) => {
+		console.log('[firebase-messaging.js] Received message', payload);
+		let data = payload.data;
+
+		let seed = data?.workout_seed ?? '-1';
+		let timestamp = data?.timestamp ?? '-1';
+
+		let localStorage = window.localStorage;
+		localStorage.setItem('workout_seed', seed);
+		localStorage.setItem('timestamp', timestamp);
+	});
 </script>
 
 <FirebaseApp {auth} {firestore}>
@@ -73,22 +84,24 @@
 			<slot />
 		</div>
 
-		<BottomNav position="absolute" classInner="grid-cols-3">
-			<BottomNavItem btnName="Grid" href="/">
-				<GridSolid
-					class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500"
-				/>
-			</BottomNavItem>
-			<BottomNavItem btnName="Search" href="/searchuser">
-				<SearchOutline
-					class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500"
-				/>
-			</BottomNavItem>
-			<BottomNavItem btnName="Friends" href="/friends">
-				<UserSolid
-					class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500"
-				/>
-			</BottomNavItem>
-		</BottomNav>
+		<SignedIn>
+			<BottomNav position="absolute" classInner="grid-cols-3">
+				<BottomNavItem btnName="Grid" href="/">
+					<GridSolid
+						class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500"
+					/>
+				</BottomNavItem>
+				<BottomNavItem btnName="Search" href="/searchuser">
+					<SearchOutline
+						class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500"
+					/>
+				</BottomNavItem>
+				<BottomNavItem btnName="Friends" href="/friends">
+					<UserSolid
+						class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500"
+					/>
+				</BottomNavItem>
+			</BottomNav>
+		</SignedIn>
 	</div>
 </FirebaseApp>

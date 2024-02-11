@@ -7,6 +7,11 @@ importScripts('/__/firebase/init.js');
 
 const messaging = firebase.messaging();
 
-messaging.onBackgroundMessage(function (payload) {
+messaging.onBackgroundMessage((payload) => {
 	console.log('[firebase-messaging-sw.js] Received background message', payload);
+	let data = payload.data;
+
+	let localStorage = window.localStorage;
+	localStorage.setItem('workout_seed', data.workout_seed);
+	localStorage.setItem('timestamp', data.timestamp);
 });
