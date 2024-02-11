@@ -12,8 +12,8 @@ import { Heading } from "flowbite-svelte";
 		</SignedOut>
 
 		<div class="flex flex-col justify-center items-center">
-			<Heading tag="h1" class="text-center mt-6 mb-4">StandUp</Heading>
-			<Heading tag="h2" class="text-center mb-4">Stay fit</Heading>
+			<Heading tag="h2" class="text-center mt-8">StandUp</Heading>
+			<Heading tag="h4" class="text-center my-2">Stay fit</Heading>
 		</div>
 
 		<SignedIn>
