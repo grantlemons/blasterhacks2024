@@ -1,11 +1,12 @@
 <script lang="ts">
 	import Circles from "$lib/Circles.svelte";
-import UserAvatar from "$lib/UserAvatar.svelte";
+  import UserAvatar from "$lib/UserAvatar.svelte";
 	import { addFriend, removeFriend } from "$lib/friends";
 	import { publicUserDataCollection } from "$lib/publicUserData";
-	import { doc } from "firebase/firestore";
+	import { workoutCollection } from "$lib/workoutPost.js";
+	import { doc, query, where } from "firebase/firestore";
 	import { Button, Card } from "flowbite-svelte";
-	import { Doc, SignedIn } from "sveltefire";
+	import { Collection, Doc, SignedIn } from "sveltefire";
 
   export let data; 
   let pageData = data;
@@ -23,7 +24,8 @@ import UserAvatar from "$lib/UserAvatar.svelte";
   <div class="flex flex-col items-center h-full">
     <Card class="w-[400px] h-full p-0">
       <Doc ref={doc(publicUserDataCollection(), data.slug)} let:data>
-          <Circles max={[100, 100, 100]} values={[10, 40, 80]} width="100%"/>
+        <Collection ref={query(workoutCollection(), where('userId', '==', pageData.slug))} let:data={docs}>
+          <Circles max={[70, 30]} values={[docs.filter(v => v.timestamp > Date.now() - 1000 * 60 * 60 * 24 * 7).length, 1]} width="100%"/>
   
           <div class="flex flex-col justify-center items-center">
             <h1 class="text-2xl font-bold">{data.displayName}</h1>
@@ -38,6 +40,7 @@ import UserAvatar from "$lib/UserAvatar.svelte";
               <Button slot="loading" on:click={() => addFriend(pageData.slug)}>Friend</Button>
             </Doc>
           </div>
+        </Collection>
       </Doc>
     </Card>
   </div>
