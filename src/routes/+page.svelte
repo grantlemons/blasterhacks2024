@@ -2,6 +2,7 @@
 	import Feed from '$lib/Feed.svelte';
 	import { SignedIn, SignedOut } from 'sveltefire';
 	import LoginModal from '$lib/loginModal.svelte';
+import { Heading } from "flowbite-svelte";
 </script>
 
 <div class="w-full flex flex-col justify-center items-center">
@@ -11,8 +12,8 @@
 		</SignedOut>
 
 		<div class="flex flex-col justify-center items-center">
-			<h1 class="text-2xl font-bold">StandUp</h1>
-			<h2 class="text-xl">Stay fit</h2>
+			<Heading tag="h1" class="text-center mt-6 mb-4">StandUp</Heading>
+			<Heading tag="h2" class="text-center mb-4">Stay fit</Heading>
 		</div>
 
 		<SignedIn>
