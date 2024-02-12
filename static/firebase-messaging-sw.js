@@ -6,7 +6,6 @@
 importScripts('/__/firebase/9.2.0/firebase-app-compat.js');
 importScripts('/__/firebase/9.2.0/firebase-messaging-compat.js');
 importScripts('/__/firebase/init.js');
-importScripts('/static/localforage.js');
 
 const messaging = firebase.messaging();
 
@@ -18,7 +17,6 @@ messaging.onBackgroundMessage((payload) => {
   let localStorage = window.localStorage;
   localStorage.setItem('workout_seed', data.workout_seed);
   localStorage.setItem('timestamp', data.timestamp);
-
 });
 
 function handleClick(event) {
